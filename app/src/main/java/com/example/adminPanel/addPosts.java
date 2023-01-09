@@ -29,7 +29,8 @@ import java.io.UnsupportedEncodingException;
 public class addPosts extends AppCompatActivity {
 
     private TextView status;
-    private EditText name;
+    private EditText tittle;
+    private EditText text;
 
 
     private RequestQueue requestQueue;
@@ -41,7 +42,7 @@ public class addPosts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_posts);
 
-        name = (EditText) findViewById(R.id.teName);
+        tittle = (EditText) findViewById(R.id.teName);
         status = (TextView) findViewById(R.id.status);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -51,10 +52,10 @@ public class addPosts extends AppCompatActivity {
         url = "https://new---app.azurewebsites.net/users/remove?id=";
         try {
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("", name.getText());
+            jsonBody.put("", tittle.getText());
+            jsonBody.put("", text.getText());
 
-            url = url + name.getText();
-            this.status.setText("deleting");
+            this.status.setText("adding");
             final String mRequestBody = jsonBody.toString();
 
 
